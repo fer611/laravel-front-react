@@ -11,7 +11,7 @@ import './charts/ChartjsConfig';
 
 // Import pages
 import Dashboard from './pages/Dashboard';
-
+import Analiticas from './pages/Analiticas';
 function App() {
 
   const location = useLocation();
@@ -25,7 +25,8 @@ function App() {
   return (
     <>
       <Routes>
-        <Route exact path="/" element={<Dashboard />} />
+      <Route exact path="/" element={<Dashboard />} />
+      <Route exact path="/dashboard/analiticas" element={<Analiticas />} />
       </Routes>
     </>
   );
