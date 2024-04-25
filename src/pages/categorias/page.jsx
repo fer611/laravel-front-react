@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Sidebar from '../../partials/Sidebar';
 import Header from '../../partials/Header';
 import Tabla from './Tabla';
+import TablaData from './TablaData';
 
 function Page() {
 
@@ -41,6 +42,10 @@ function Page() {
           </div>
           <div className='container mx-auto'>
             <Tabla data={data} />
+          </div>
+
+          <div className='container mx-auto'>
+            <TablaData data={data} />
           </div>
         </main>
 
