@@ -30,7 +30,7 @@ const StudentProvider = ({ children }) => {
         
         try {
             /* Aca usamos una ruta relativa, gracias a la variable de entorno */
-            const { data } = await clienteAxios(`${import.meta.env.VITE_API_URL}/api/categories`)
+            const { data } = await clienteAxios('/api/categories')
             /* Seteamos las categorias */
             setCategorias(data.data)
             /* seteamos la categoria inicial */
