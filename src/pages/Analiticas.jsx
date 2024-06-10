@@ -30,7 +30,7 @@ function Dashboard() {
                   <h2 className="text-xl font-semibold text-gray-800">{categoria.name}</h2>
                   <p className="text-gray-700 mt-2">{categoria.description ?? 'Sin Descripción'}</p>
                   <p className="text-gray-700 mt-2">{categoria.status}</p>
-                  {/* Botones eliminar y editar con estilos hermosos */}
+                  {/* Botones eliminar y editar */}
                   <div className="flex justify-end mt-4">
                     <button className="text-sm rounded p-2 bg-red-500 hover:bg-red-700 text-white font-bold">Eliminar</button>
                     <button className="text-sm rounded p-2 bg-indigo-500 hover:bg-indigo-700 ml-2 font-bold text-white">Editar</button>
