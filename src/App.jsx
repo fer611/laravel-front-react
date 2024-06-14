@@ -10,10 +10,8 @@ import Dashboard from "./pages/Dashboard";
 import Analiticas from "./pages/Analiticas";
 import Blog from "./pages/Blog";
 import Tag from "./pages/Tags";
-import Posts from "./pages/Posts/page";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
-import PostsCreate from "./pages/Posts/create";
 
 function App() {
   const location = useLocation();
@@ -31,8 +29,6 @@ function App() {
         <Route exact path="/dashboard/categorias" element={<Analiticas />} />
         <Route exact path="/dashboard/tags" element={<Tag />} />
         <Route exact path="/blog" element={<Blog />} />
-        <Route exact path="/blog/posts" element={<Posts />} />
-        <Route exact path="/blog/posts/create" element={<PostsCreate />} />
         {/* Autenticación */}
         <Route exact path="/register" element={<Register/>}/>
         <Route exact path="/login" element={<Login/>}/>
