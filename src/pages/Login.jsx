@@ -1,25 +1,24 @@
 import React, { createRef, useEffect, useState } from "react";
-import clienteAxios from "../config/axios";
 import Alerta from "../components/Alerta";
+
+import { useAuth } from "../hooks/useAuth";
 export default function Login() {
   const emailRef = createRef();
   const passwordRef = createRef();
 
   const [errors, setErrors] = useState({});
+  const { login } = useAuth({
+    middelware: "guest",
+    url: "/",
+  });
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const datos = {
       email: emailRef.current.value,
       password: passwordRef.current.value,
     };
-    try {
-      const {data} = await clienteAxios.post("/api/login", datos);
-      console.log("Respuesta: ",data);
-      localStorage.setItem('AUTH_TOKEN',data.token)
-      setErrors([]);
-    } catch (error) {
-      setErrors(error.response.data.errors);
-    }
+    login(datos, setErrors)
   };
 
   return (
@@ -75,9 +74,9 @@ export default function Login() {
               />
             </div>
             {errors.email &&
-            errors.email.map((error, index) => (
-              <Alerta key={index}>{error}</Alerta>
-            ))}
+              errors.email.map((error, index) => (
+                <Alerta key={index}>{error}</Alerta>
+              ))}
             <div className="flex items-center border-2 py-2 px-3 rounded-2xl">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -101,9 +100,9 @@ export default function Login() {
               />
             </div>
             {errors.password &&
-            errors.password.map((error, index) => (
-              <Alerta key={index}>{error}</Alerta>
-            ))}
+              errors.password.map((error, index) => (
+                <Alerta key={index}>{error}</Alerta>
+              ))}
             <button
               type="submit"
               className="block w-full bg-indigo-600 mt-4 py-2 rounded-2xl text-white font-semibold mb-2"
