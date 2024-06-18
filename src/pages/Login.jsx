@@ -8,7 +8,7 @@ export default function Login() {
 
   const [errors, setErrors] = useState({});
   const { login } = useAuth({
-    middelware: "guest",
+    middleware: "guest",
     url: "/",
   });
 

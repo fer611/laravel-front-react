@@ -3,11 +3,13 @@ import React, { useState } from 'react';
 import Sidebar from '../partials/Sidebar';
 import Header from '../partials/Header';
 import WelcomeBanner from '../partials/dashboard/WelcomeBanner';
-import Banner from '../partials/Banner';
+import { useAuth } from '../hooks/useAuth';
 
 function Dashboard() {
 
   const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  const {user, error} = useAuth({middleware: 'auth'})
 
   return (
     <div className="flex h-screen overflow-hidden">

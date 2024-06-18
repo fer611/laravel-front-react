@@ -1,6 +1,6 @@
 import React, { createRef, useState } from "react";
-import clienteAxios from "../config/axios";
 import Alerta from "../components/Alerta";
+import { useAuth } from "../hooks/useAuth";
 export default function Registro() {
   const nameRef = createRef();
   const usernameRef = createRef();
@@ -10,6 +10,9 @@ export default function Registro() {
   const passwordConfirmationRef = createRef();
 
   const [errors, setErrors] = useState({});
+
+  const {register} = useAuth({middleware: 'guest', url: '/'})
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const datos = {
@@ -20,17 +23,7 @@ export default function Registro() {
       password: passwordRef.current.value,
       password_confirmation: passwordConfirmationRef.current.value,
     };
-    console.log("===========DATOS A ENVIAR=========================");
-    console.log(datos);
-    console.log("====================================");
-    try {
-      const {data} = await clienteAxios.post("/api/register", datos);
-      console.log("=================RESPUESTA===================");
-      console.log(data.data);
-      console.log("====================================");
-    } catch (error) {
-      setErrors(error.response.data.errors);
-    }
+    register(datos, setErrors)
   };
   return (
     <div className="h-screen md:flex">
